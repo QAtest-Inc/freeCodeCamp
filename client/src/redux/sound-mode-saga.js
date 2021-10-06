@@ -12,9 +12,10 @@ export function setSound(setting) {
 function* updateLocalSoundSaga({ payload: { user, sound } }) {
   if (user) {
     const { sound = false } = user;
-    return setSound(sound);
+    setSound(sound);
+  } else if (typeof sound !== 'undefined') {
+    setSound(sound);
   }
-  return setSound(sound);
 }
 
 export function createSoundModeSaga(types) {

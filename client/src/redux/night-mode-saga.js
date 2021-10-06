@@ -20,12 +20,14 @@ function* updateLocalThemeSaga({ payload: { user, theme } }) {
   const currentTheme = store.get(themeKey) || defaultTheme;
   if (user) {
     const { theme = defaultTheme } = user;
-    return setTheme(currentTheme, theme);
+    setTheme(currentTheme, theme);
   }
   if (theme) {
-    return setTheme(currentTheme, theme);
+    setTheme(currentTheme, theme);
   }
-  return setTheme(currentTheme);
+  if (typeof currentTheme !== 'undefined') {
+    setTheme(currentTheme);
+  }
 }
 
 export function createNightModeSaga(types) {
